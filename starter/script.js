@@ -33,3 +33,18 @@ function getWeatherData(cityFormatted) {
     let latitude = response[0].lat.toFixed(2);
     let longitude = response[0].lon.toFixed(2);
     let weatherQueryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
+
+    $.ajax({
+      url: weatherQueryURL,
+      method: "GET"
+    }).then(function(response) {
+      let responseData = [];
+      for (let i = 0; i < response.list.length; i += 8) {
+        let responseDate = moment(response.list[i].dt_txt).format("Do MMMM YYYY");
+        let responseTemp = $("<div>").append("Temp: ", ((response.list[i].main.temp - 273.15).toFixed(2) + '&#8451;'));
+        let responseIcon = response.list[i].weather[0].icon;
+        let responseIconShow = "https://openweathermap.org/img/w/" + responseIcon + ".png";
+        let responseHumidity = $("<div>").append("Humidity: ", response.list[i].main.humidity + '%');
+        let responseWindSpeed = $("<div>").append("Wind Speed: ", response.list[i].wind.speed + ' meters per second');
+
+        
