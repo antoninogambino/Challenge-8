@@ -26,7 +26,7 @@ To view the weather data for a city from the search history, simply click on the
 
 **URLs to access GitHub repository and Deployed url**
 
-GitHub: 
+GitHub: https://github.com/antoninogambino/Challenge-8.git
 Deployed URL: 
 
 **Credits**
