@@ -22,7 +22,7 @@ To view the weather data for a city from the search history, simply click on the
 
 **Screenshot**
 
-
+![image](https://github.com/antoninogambino/Challenge-8/assets/112243266/83141c37-25b0-410a-b365-6803c47a513c)
 
 **URLs to access GitHub repository and Deployed url**
 
