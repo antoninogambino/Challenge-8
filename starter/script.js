@@ -47,4 +47,32 @@ function getWeatherData(cityFormatted) {
         let responseHumidity = $("<div>").append("Humidity: ", response.list[i].main.humidity + '%');
         let responseWindSpeed = $("<div>").append("Wind Speed: ", response.list[i].wind.speed + ' meters per second');
 
-        
+        responseData.push({
+          date: responseDate,
+          temp: responseTemp,
+          icon: responseIcon,
+          iconShow: responseIconShow,
+          humidity: responseHumidity,
+          windSpeed: responseWindSpeed
+        });
+        if (responseData.length > 0) {
+          $("#weather-container").empty();
+          for (let i = 0; i < responseData.length; i++) {
+            let card = $("<div>").addClass("card");
+            let cardBody = $("<div>").addClass("card-body");
+            let cityName = $("<h5>").addClass("card-title").text(cityFormatted + " (" + responseData[i].date + ")");
+            let weatherIcon = $("<img>").attr("src", responseData[i].iconShow).addClass("weather-icon");
+            let temp = responseData[i].temp;
+            let humidity = responseData[i].humidity;
+            let windSpeed = responseData[i].windSpeed;
+
+            cardBody.append(cityName, weatherIcon, temp, humidity, windSpeed);
+            card.append(cardBody);
+            $("#weather-container").append(card);
+          }
+        }
+      }
+    });
+  });
+}
+});
