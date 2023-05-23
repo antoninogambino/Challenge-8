@@ -12,3 +12,12 @@ function createHistoryBtn(cityFormatted) {
   });
   $("#history").append(historyBtn);
 }
+
+ // Event handler for the search button click
+ $("#search-button").on("click", function(event) {
+  event.preventDefault();
+  const city = $("#search-input").val().trim();
+  const cityFormatted = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+  createHistoryBtn(cityFormatted);
+  getWeatherData(cityFormatted);
+});
